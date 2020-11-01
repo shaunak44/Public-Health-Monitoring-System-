@@ -1,0 +1,148 @@
+{% extends 'main/index.html' %}
+<!-- <h1>
+    Your profile
+</h1>
+<p>
+    Aadhaar:{{citizenData.aadhaar}}
+    Gender:{{citizenData.gender}}
+    {{citizenData.address_id}}
+    {{financial_statusData.pan_number}}
+    {{addressData.street}}
+</p> -->
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/data.css' %}">
+    </head>
+    <h5 style="text-align:right; margin-right:50px;position:absolute; right:50px; top:125px;" class="btn btn-outline-dark btn-lg" onclick="location.href = '/logout'">logout</h5> 
+<div class="container">
+    <div class="main-body">
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                <h5 class="text-secondary mb-1"><b>Your Aadhaar Number</b></h5>
+                <h5 class="text-secondary mb-1"><b>{{citizenData.aadhaar}}</b></h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Name: {{citizenData.name}} </p>
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Gender: {{citizenData.gender}} </p>
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Email-Id: {{citizenData.email_id}} </p>
+                    
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Contact No: {{contactData.contact_number}} </p>
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Address: {{addressData.street}}, {{addressData.city}}, {{addressData.state}} </p>
+                </div>
+              </div>
+              
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">PAN No: {{financial_statusData.pan_number}} </p>
+                    </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Age: {{traitsData.age}} </p>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Weight: {{traitsData.weight}} </p>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Height: {{traitsData.height}} </p>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">BMI: {{traitsData.bmi}} </p>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 15px;">Contact No: {{contactData.contact_number}} </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Diabetes: {{co_morbidityData.diabetes}} </p>
+                </div>
+                <div class="row">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Hypertension: {{co_morbidityData.hypertension}} </p>
+                </div>
+                <div class="row">
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Asthma: {{co_morbidityData.asthma}} </p>  
+                </div>
+                
+                  <hr>
+                  <div class="row">
+                  
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Insurance ID: {{insuranceData.insurance_id}} </p>
+                  </div>
+                  <div class="row">
+                  
+                    
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Company Name: {{insuranceData.company_name}} </p>
+                   
+
+              </div>
+              <div class="row">  
+                 <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Category: {{insuranceData.category}} </p>
+
+                </div>
+                <hr>
+                  <div class="row">
+                  
+                    <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px">Job Profile: {{financial_statusData.job_profile}} </p>
+                    
+                </div> 
+                <div class="row">
+                  
+                  <p class="text-secondary mb-1" style="text-align:right;margin-left: 150px;">Job Security: {{financial_statusData.job_security}} </p>
+                 
+                </div> 
+                <div class="row">
+                  
+                   <p class="text-secondary mb-1" style="text-align:left;margin-left: 150px;">Annual Income: {{financial_statusData.annual_income}} </p>
+
+                </div> 
+                </div>
+              </div>
+
+              <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                        {% if treatmentData %}
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">HospitalID: {{treatmentData.hospital_id}} </p>
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">DoctorID: {{treatmentData.doctor_id}} </p>
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">Start Date: {{treatmentData.start_date}} </p>
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">End Date: {{treatmentData.end_date}} </p>
+                        {% else %}
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 50px;">No records for treatment found!</p>
+                        {% endif %}
+                        
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                        {% if doctorData %}
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">DoctorID: {{doctorData.doctor_id}} </p>
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">HospitalID: {{doctorData.hospital_id}} </p>
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 25px;">Specialization: {{doctorData.specialization}} </p>
+                        {% else %}
+                        <p class="text-secondary mb-1" style="text-align:left;margin-left: 50px;">Your are not registered as doctor!</p>
+                        {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+{% endblock %}

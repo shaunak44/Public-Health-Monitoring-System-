@@ -1,0 +1,56 @@
+{% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<!-- <div class="container">
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Sign Up</button>
+
+    </form>
+
+    If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+</div>
+-->
+
+<div class="card" style="height:700px; width:30%; margin:0 auto">
+    <h5 style="color:rgb(4, 4, 53); font-size:30px; ">
+        <br>
+        <br>
+     <b>New Registration</b>
+    </h5>
+    <br>
+    <br>
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" method="POST">
+        {% csrf_token %}
+        <!-- Email -->
+        <div class="md-form">
+            {{ form.username|as_crispy_field }}
+        </div>
+        <!-- Password -->
+        <div class="md-form">
+            {{ form.password1|as_crispy_field }}
+        </div>  
+        <div class="md-form">
+            {{ form.password2|as_crispy_field }}
+        </div>  
+        <!-- Sign in button -->
+        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+        <!-- Register -->
+        <p></p>
+            If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+        </p>
+    </form>
+    </div>
+  </div>
+  <!-- Material form login -->
+
+
+
+{% endblock %}

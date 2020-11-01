@@ -1,0 +1,44 @@
+{% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+{% if user.is_authenticated %}
+    <h4 style="text-align:right; margin-right:50px;position:absolute; left:50px; top:125px; color: darkslategray;">Hi {{user.username}}</h4> 
+{% endif %}
+
+<h5 style="text-align:right; margin-right:50px;position:absolute; right:50px; top:125px;" class="btn btn-outline-dark btn-lg" onclick="location.href = '/logout'">logout</h5> 
+   <!--<body>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <label for="aid">Enter aadhaar or hospital_id:</label>
+            <input type="text" id="aid" name="aid"><br><br>
+            <button type="submit" name="save" value="save">Next</button>
+          </form>
+    </body> -->
+
+    <div class="card" style="height:450px; width:30%; margin:0 auto">
+        <h5 style="color:rgb(4, 4, 53); font-size:30px; ">
+            <br>
+            <br>
+         <b>Enter your Aadhaar Number</b>
+        </h5>
+        <br>
+        <br>
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+          <!-- Form -->
+          <form class="text-center" style="color: #757575;" method="POST">
+            {% csrf_token %}
+            <!-- Email -->
+            <div class="md-form">
+                {{ form.aadhaar|as_crispy_field }}
+            </div>
+            <br><br>
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit"  name="save" value="save">Next</button>
+            <!-- Register -->
+        </form>
+        </div>
+      </div>
+
+{% endblock %}

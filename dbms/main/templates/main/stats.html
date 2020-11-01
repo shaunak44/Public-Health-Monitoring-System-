@@ -1,0 +1,103 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+<div>
+<div id="container" style="width: 40%;float:left;margin-bottom: 50px;margin-left: 150px;">
+    <h2 style="color: darkslategray;">Job Security</h2>
+    <canvas id="pie-chart"></canvas>
+  </div>
+  <div id="container" style="width: 40%;float:right;margin-bottom: 50px;margin-right: 150px;">
+    <h2 style="color: darkslategray;">Diseases</h2>
+    <canvas id="pie-chart1"></canvas>
+  </div>
+  <div id="container" style="width: 40%;float:right;margin-right: 150px;">
+    <h2 style="color: darkslategray;">Doctors</h2>
+    <canvas id="pie-chart2"></canvas>
+  </div>
+  <div id="container" style="width: 40%;margin-left: 150px;">
+    <h2 style="color: darkslategray;">Age-Group</h2>
+    <canvas id="pie-chart3"></canvas>
+</div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#696969', '#808080',],
+          label: 'Job security'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+    var configD = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data_d|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9'
+          ],
+          label: 'Diseases'
+        }],
+        labels: {{ labels_d|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+    var configDoctor = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data_doc|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9'
+          ],
+          label: 'Number of Doctors'
+        }],
+        labels: {{ labels_doc|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+    var configAge = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data_age|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9'
+          ],
+          label: 'Number of Beds'
+        }],
+        labels: {{ labels_age|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      var ctx1 = document.getElementById('pie-chart1').getContext('2d');
+      var ctx2 = document.getElementById('pie-chart2').getContext('2d');
+      var ctx3 = document.getElementById('pie-chart3').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+      window.myPie1 = new Chart(ctx1, configD);
+      window.myPie2 = new Chart(ctx2, configDoctor);
+      window.myPie3 = new Chart(ctx3, configAge);
+    };
+
+  </script>
+
+  
+{% endblock %}

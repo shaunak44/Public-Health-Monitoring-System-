@@ -1,0 +1,11 @@
+
+{% block title%} Form {% endblock%}
+
+{%block content%}
+
+<form action="/create/" method="post" action="#">
+{% csrf_token %}
+{{form.as_ul}}
+<button type="submit" name="save" value="save">Save</button>
+</form>
+{% endblock %}

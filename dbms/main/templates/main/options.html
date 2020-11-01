@@ -1,0 +1,29 @@
+{% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h5 style="text-align:center;">{{ message }}</h5>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<html>
+    {% if user.is_authenticated %}
+    <h4 style="text-align:right; margin-right:50px;position:absolute; left:50px; top:125px; color: darkslategray;">Hi {{user.username}}</h4> 
+    {% endif %}
+    <h5 style="text-align:right; margin-right:50px;position:absolute; right:50px; top:125px;" class="btn btn-outline-dark btn-lg" onclick="location.href = '/logout'">logout</h5> 
+    <br>
+    <br>
+    <body>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/citizen/'">I am not a Doctor</button>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/doctor/'">I am a Doctor</button>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/hospital/'">On Behalf Of Hospital</button>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/profile/'">See your profile</button>
+    </body>
+</html>
+
+{% endblock %}

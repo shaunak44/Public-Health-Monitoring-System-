@@ -1,0 +1,9 @@
+<h1> Citizen Form</h1>>
+<form action="/create/" method="post" action="#">
+{% csrf_token %}
+{{form_citizen.as_ul}}
+{{form_address.as_ul}}
+{{form_contact.as_ul}}
+<button type="submit" name="save" value="save">Save</button>
+</form>
+

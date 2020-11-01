@@ -1,0 +1,51 @@
+{% extends 'main/index.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h5 style="text-align:center;">{{ message }}</h5>
+    {% endfor %}
+</ul>
+{% endif %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<div class="card" style="height:600; width:1200px; margin:0 auto" >
+    <div class="container">
+        <img src="{% static 'logo.jpg' %}" alt="Notebook" style="height:524px; width:800px;">
+        <div class="content">
+            <div class="card-body px-lg-5 pt-0">
+                <h4 style="text-align:center; margin-top:25px;color:rgb(4, 4, 53);">Why is monitoring needed?</h4>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">Serve as an early warning system, identify public health emergencies.</h6>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">Guide public health policy and strategies.</h6>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">Document impact of an intervention or progress towards specified public health targets/goals.</h6>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">Understand/monitor the epidemiology of a condition to set priorities and guide public health policy and strategies.</h6>
+            </div>
+            <div class="card-body px-lg-5 pt-0">
+                <h4 style="text-align:center;margin-top:25px;color:rgb(4, 4, 53);">What is public health monitoring system?</h4>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">The Public health monitoring system is a surveillance portal.</h6>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">This enables Government to handle Pandemics better.</h6>
+                <h6 style="text-align:left;margin-left: 30px;color:rgb(4, 4, 53);">This allows the health department to access the situation and decide preference for treatment.</h6>
+                <h6 style="text-align:left;margin-left: 30px; margin-bottom:25px;color:rgb(4, 4, 53);">Overall, a comprehensive and inclusive health system can be formed with such assessment.</h6>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/admin/'"><b>Admin</b></button>
+                <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/register/'"><b>Non-Admin</b></button>
+                <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/stats/'"><b>View Statistics</b></button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+<!--<html> 
+    <body>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/admin/'"><b>Admin</b></button>
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href = '/register/'"><b>Non-Admin</b></button>
+    </body>
+</html> -->
+{% endblock %}

@@ -1,0 +1,104 @@
+
+
+{% extends 'main/index.html' %}
+{% block title %} Form {% endblock %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+
+{% if user.is_authenticated %}
+    <h4 style="text-align:right; margin-right:50px;position:absolute; left:50px; top:125px; color: darkslategray;">Hi {{user.username}}</h4> 
+{% endif %}
+<h5 style="text-align:right; margin-right:50px;position:absolute; right:50px; top:125px;" class="btn btn-outline-dark btn-lg" onclick="location.href = '/logout'">logout</h5> 
+
+<div class="card" style="height:1000px; width:60%; margin:0 auto">
+    <h5 style="color:rgb(4, 4, 53); font-size:30px; ">
+        <br>
+        <br>
+     <b>Additional Details</b>
+    </h5>
+    <br>
+    <br>
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" method="POST">
+        {% csrf_token %}
+        <!-- Email -->
+        <div style="float:left; clear:right;">
+        <div class="md-form" style="margin-right:100px; margin-left:50px" >
+            {{ form1.age|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form1.weight|as_crispy_field }}
+        </div>  
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form1.height|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form1.bmi|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form3.last_checkup_date|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form3.spo2|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px">
+            {{ form3.temperature|as_crispy_field }}
+        </div>
+        <div class="md-form" style="margin-right:100px; margin-left:50px;  margin-bottom:50px">
+            {{ form3.pulse_rate|as_crispy_field }}
+        </div>
+        </div>
+        <div style="float:left; clear:right;">
+            <div class="md-form" style="margin-right:50px;">
+                {{ form5.pan_number|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px;">
+                {{ form5.job_profile|as_crispy_field }}
+            </div>  
+            <div class="md-form" style="margin-right:50px">
+                {{ form5.annual_income|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px">
+                {{ form6.insurance_id|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px">
+                {{ form6.company_name|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px">
+                {{ form6.category|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px">
+                {{ form7.hospital_id|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-right:50px">
+                {{ form7.specialization|as_crispy_field }}
+            </div>
+            
+        </div>
+
+        <div style="float:left; clear:right;">
+            <div class="md-form" style="margin-bottom:30px;margin-top:37.5px ; margin-left:50px" >
+                {{ form4.diabetes|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-bottom:30px; margin-left:50px">
+                {{ form4.hypertension|as_crispy_field }}
+            </div>  
+            <div class="md-form" style="margin-bottom:30px; margin-left:50px">
+                {{ form4.asthma|as_crispy_field }}
+            </div>
+            <div class="md-form" style="margin-bottom:30px; margin-left:50px">
+                {{ form5.job_security|as_crispy_field }}
+            </div>
+            
+        </div>
+        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit"  name="save" value="save">Submit</button>
+    </form>
+    </div>
+  </div>
+
+
+
+{% endblock %}

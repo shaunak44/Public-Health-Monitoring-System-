@@ -1,0 +1,44 @@
+{% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h5 style="text-align:center;">{{ message }}</h5>
+    {% endfor %}
+</ul>
+{% endif %}
+<!-- Material form login -->
+<div class="card" style="height:600px; width:30%; margin:0 auto">
+    <h5 style="color:rgb(4, 4, 53); font-size:30px; ">
+        <br>
+        <br>
+     <b>Login</b>
+    </h5>
+    <br>
+    <br>
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" method="POST">
+        {% csrf_token %}
+        <!-- Email -->
+        <div class="md-form">
+            {{ form.username|as_crispy_field }}
+        </div>
+        <!-- Password -->
+        <div class="md-form">
+            {{ form.password|as_crispy_field }}
+        </div>  
+        <!-- Sign in button -->
+        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+        <!-- Register -->
+        <p>Don't have an account?
+          <a href="/register">Register Here</a>
+        </p>
+    </form>
+    </div>
+  </div>
+  <!-- Material form login -->
+
+{% endblock %}
